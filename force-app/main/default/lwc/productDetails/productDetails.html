@@ -1,0 +1,20 @@
+<template>
+	<lightning-card title="Detalhes" icon-name="standard:people">
+		<div class="slds-m-around_medium">
+			
+			<template if:true={product.data}>
+				<lightning-record-form
+					object-api-name="SF_Produtos__c"
+					record-id={productId}
+					layout-type="Compact">
+				</lightning-record-form>
+			</template>
+			
+			<template if:true={product.error}>
+				<div class="slds-text-color_error">
+					Falha ao carregar dados
+				</div>
+			</template>
+		</div>
+	</lightning-card>
+</template>

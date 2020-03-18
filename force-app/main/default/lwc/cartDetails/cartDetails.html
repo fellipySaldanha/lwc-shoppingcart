@@ -1,0 +1,45 @@
+<template>    
+    <table style="margin-bottom: 50px;"
+        class="slds-max-medium-table_stacked-horizontal slds-table slds-no-row-hover slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col" class="th-profile-wide">Produto</th>
+                <th scope="col" class="th-profile-wide slds-cell-shrink">Valor</th>
+                <th scope="col" class="th-profile-medium slds-cell-shrink">Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr for:each={data} for:item="product" key={ident} id={product.id} class="slds-text-align_center">
+                <td class="slds-cell-shrink slds-truncate">{product.name}</td>
+                <td class="slds-cell-shrink slds-truncate">
+                    <lightning-formatted-number name="moeda" value={product.valor__c} format-style="currency" currency-code="BRL">
+                    </lightning-formatted-number>
+                </td>
+                <td class="slds-cell-shrink slds-truncate slds-form-element">
+                    <lightning-input class="quantity slds-text-align_center" placeholder='1' min="1" max="100" data-ident={product.Id} onchange={quantityHandle} type="number"></lightning-input>
+                </td>
+                <td class="slds-cell-shrink slds-truncate">
+                    <button onclick={remove} value={product.Id} class="slds-button slds-button_destructive">X</button>
+                </td>                           
+            </tr>
+        </tbody>
+    </table>
+
+    <lightning-combobox disabled={shippingType} style="width: 250px;" label="Tipo" onchange={setshipping} value={value} options={shipping}
+        class="picklist">
+    </lightning-combobox>    
+    <p class="date-label slds-text-title">Data de entrega</p>
+    <input class="date-input slds-input" disabled={shippingDate} type="date"/>              
+    <lightning-input disabled={address} type="text" label="Endereço"></lightning-input>                  
+
+    <div class="slds-m-top_medium slds-m-bottom_x-large slds-backdrop_open">
+        <p class="slds-text-heading_medium slds-m-bottom_medium">
+            Valor da compra:
+            <lightning-formatted-number value={price} format-style="currency" currency-code="BRL">
+            </lightning-formatted-number>
+        </p>    
+        <button type="submit" disabled={finish} class="slds-button slds-button_brand" onclick={buy}>Finalizar</button>        
+    </div>
+
+
+</template>

@@ -1,0 +1,44 @@
+<template>
+    <div class="product-card">
+    <lightning-card class="slds-text-align_center" title={product.Name}>
+        <div class="slds-p-horizontal_small slds-text-align_center">
+            <div class="slds-media__body">                
+                <img src={product.Foto__c}/>              
+                <p class="slds-m-bottom_xx-small slds-text-heading_small"><lightning-formatted-number value={product.Valor__c} format-style="currency" currency-code="BRL"></lightning-formatted-number></p>             
+            </div>
+            <a class="slds-button slds-button_neutral" onclick={handleOpenRecordClick}>Adicionar ao carrinho</a>
+            <a class="slds-button slds-button_neutral" onclick={openmodal}>Detalhes</a>
+        </div>
+    </lightning-card> 
+    </div>  
+   
+    <div class="slds-card">
+                <template if:true={openmodel}>
+                <div class="demo-only">
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                        <div class="slds-modal__container slds-text-align_center slds-m-vertical_large ">
+                            <header class="slds-modal__header">                                
+                                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Detalhes do produto</h2>
+                            </header>
+                            <div class="slds-p-horizontal_small slds-theme_default">
+                                    <div class="slds-media__body">
+                                        <p class="slds-m-bottom_xx-small"> <lightning-badge label={product.Name}></lightning-badge></p>
+                                        <img class="photoDetails" src={product.Foto__c}/>                
+                                        <p class="slds-m-bottom_xx-small">Valor: <lightning-formatted-number value={product.Valor__c} format-style="currency" currency-code="BRL"></lightning-formatted-number></p>             
+                                        <p class="slds-m-bottom_xx-small">Categoria: {product.Categoria__c}</p>
+                                        <p class="slds-m-bottom_xx-small">Tipo: {product.Tipo__c}</p>                
+                                    </div>
+                                  
+                                </div>
+                            <footer class="slds-modal__footer">
+                                <lightning-button label="Cancelar" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <lightning-button label="Adicionar ao carrinho" variant="brand" onclick={handleOpenRecordClick}></lightning-button>
+                            </footer>
+                        </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </div>
+                </template>
+    </div>
+          
+</template>

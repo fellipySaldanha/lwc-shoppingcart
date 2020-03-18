@@ -1,0 +1,28 @@
+<template>
+    <a class="slds-button slds-button_neutral" href="https://resourceful-wolf-fn2s9-dev-ed.lightning.force.com/lightning/n/Comprar">Nova Compra</a>
+    <table style="margin-bottom: 50px;"
+        class="slds-max-medium-table_stacked-horizontal slds-table slds-no-row-hover slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col" class="th-profile-wide">Id</th>
+                <th scope="col" class="th-profile-wide">Valor da compra</th>
+                <th scope="col" class="th-profile-wide slds-cell-shrink">Entrega</th>               
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr for:each={historic.data} for:item="shopping" key={shopping.Id}>
+                <td class="slds-cell-shrink slds-truncate">{shopping.Name}</td>
+                <td class="slds-cell-shrink slds-truncate">
+                    <lightning-formatted-number class="moeda" name="moeda" value={shopping.TotalDaCompra__c}
+                        format-style="currency" currency-code="BRL">
+                    </lightning-formatted-number>
+                </td>
+                <td class="slds-cell-shrink slds-truncate slds-form-element">
+                    {shopping.Entrega__c}
+                </td>
+               <!-- <td class="slds-cell-shrink slds-truncate"> -->                                  
+            </tr>
+        </tbody>
+    </table>
+</template>

@@ -1,0 +1,18 @@
+.date-input{
+    padding: 12px;
+    border: 1px;
+    width: 204px;
+    height: 30px;
+    text-align: center;
+}
+
+.quantity{
+    width: 80px !important;
+    margin-bottom: 10px;
+    text-align: center !important;
+}
+
+.date-label{
+    margin-top: 5px;
+    margin-bottom: 3px;
+}

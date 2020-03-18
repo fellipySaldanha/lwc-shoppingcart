@@ -1,0 +1,12 @@
+.product-card {
+    border: 1px solid #d2955d;
+    border-radius: .25rem;
+    display: block;
+}
+.product-silhouette {
+    height: 100px;
+}
+
+.combo{
+    width: 250px;
+}
